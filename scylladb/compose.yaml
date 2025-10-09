@@ -1,0 +1,14 @@
+services:
+  scylladb-1:
+    image: scylladb/scylla
+    container_name: scylladb-1
+    # environment:
+    #   FOO: ${FOO}
+    ports:
+      - "9042:9042"
+    volumes:
+      - scylladb-data:/home/pr/.local/docker/scylladb/data
+    restart: unless-stopped
+
+volumes:
+  scylladb-data:
