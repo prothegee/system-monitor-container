@@ -6,11 +6,11 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    hostname: "127.0.0.1"
     ports:
       - "5432:5432"
-    volumes:
-      - ./data/etc:/etc
-      - ./data/var:/var
+    # volumes:
+    #   - ./data:/foo/bar
     restart: unless-stopped
 
 # volumes:

@@ -4,11 +4,11 @@ services:
     container_name: couchbase-1
     # environment:
     #   FOO: ${FOO}
-    # ports:
-    #   - "8091:8091"
-    volumes:
-      - ./data/etc:/etc
-      - ./data/var:/var
+    hostname: "127.0.0.1"
+    ports:
+      - "8091:8091"
+    # volumes:
+    #   - ./data:/foo/bar
     restart: unless-stopped
 
 # volumes:

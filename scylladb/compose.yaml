@@ -4,15 +4,15 @@ services:
     container_name: scylladb-1
     # environment:
     #   FOO: ${FOO}
+    hostname: "127.0.0.1"
     ports:
       - "7002:7002"
       - "7003:7003"
       - "7200:7200"
       - "9043:9043"
       - "9161:9161"
-    volumes:
-      - ./data/etc:/etc
-      - ./data/var:/var
+    # volumes:
+    #   - ./data:/foo/bar
     restart: unless-stopped
 
 # volumes:
