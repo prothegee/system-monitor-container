@@ -5,10 +5,15 @@ services:
     # environment:
     #   FOO: ${FOO}
     ports:
-      - "9042:9042"
+      - "7002:7002"
+      - "7003:7003"
+      - "7200:7200"
+      - "9043:9043"
+      - "9161:9161"
     volumes:
-      - scylladb-data:/home/pr/.local/docker/scylladb/data
+      - ./data/etc:/etc
+      - ./data/var:/var
     restart: unless-stopped
 
-volumes:
-  scylladb-data:
+# volumes:
+#   scylladb-data:

@@ -1,15 +1,15 @@
 services:
-  couchbase-1:
-    image: couchbase:community
-    container_name: couchbase-1
+  prometheus-1:
+    image: prom/prometheus
+    container_name: prometheus-1
     # environment:
     #   FOO: ${FOO}
     # ports:
-    #   - "8091:8091"
+    #   - "3000:3000"
     volumes:
       - ./data/etc:/etc
       - ./data/var:/var
     restart: unless-stopped
 
 # volumes:
-#   couchbase-data:
+#   prometheus-data:

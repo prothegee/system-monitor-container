@@ -1,16 +1,17 @@
 services:
   postgresql-1:
-    image: postgres:18
+    image: postgres
     container_name: postgresql-1
     environment:
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - "5432:5432"
     volumes:
-      - postgres-data:/home/pr/.local/docker/postgresql/data
+      - ./data/etc:/etc
+      - ./data/var:/var
     restart: unless-stopped
 
-volumes:
-  postgres-data:
+# volumes:
+#   postgres-data:

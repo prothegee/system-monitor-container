@@ -1,14 +1,15 @@
 services:
   redis-1:
-    image: redis:8
+    image: redis
     container_name: redis-1
     # environment:
     #   FOO: ${FOO}
-    ports:
-      - "6379:6379"
+    # ports:
+    #   - "6379:6379"
     volumes:
-      - redis-data:/home/pr/.local/docker/redis/data
+      - ./data/etc:/etc
+      - ./data/var:/var
     restart: unless-stopped
 
-volumes:
-  redis-data:
+# volumes:
+#   redis-data:

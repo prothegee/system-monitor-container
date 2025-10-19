@@ -1,15 +1,15 @@
 services:
-  couchbase-1:
-    image: couchbase:community
-    container_name: couchbase-1
+  rabbitmq-1:
+    image: rabbitmq
+    container_name: rabbitmq-1
     # environment:
     #   FOO: ${FOO}
     # ports:
-    #   - "8091:8091"
+    #   - "9092:9092"
     volumes:
       - ./data/etc:/etc
       - ./data/var:/var
     restart: unless-stopped
 
 # volumes:
-#   couchbase-data:
+#   rabbitmq-data:

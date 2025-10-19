@@ -1,14 +1,15 @@
 services:
   kafka-1:
-    image: apache/kafka:4.1.0
+    image: apache/kafka
     container_name: kafka-1
     # environment:
     #   FOO: ${FOO}
-    ports:
-      - "9092:9092"
+    # ports:
+    #   - "9092:9092"
     volumes:
-      - kafka-data:/home/pr/.local/docker/kafka/data
+      - ./data/etc:/etc
+      - ./data/var:/var
     restart: unless-stopped
 
-volumes:
-  kafka-data:
+# volumes:
+#   kafka-data:
