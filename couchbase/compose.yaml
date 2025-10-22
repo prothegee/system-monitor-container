@@ -4,12 +4,19 @@ services:
     container_name: couchbase-1
     # environment:
     #   FOO: ${FOO}
-    hostname: "127.0.0.1"
+    # hostname: "0.0.0.0"
     ports:
       - "8091:8091"
-    # volumes:
-    #   - ./data:/foo/bar
+    volumes:
+      - ./data:/opt/couchbase/var
+    networks:
+      - core_docker_network
     restart: unless-stopped
 
 # volumes:
 #   couchbase-data:
+
+networks:
+    core_docker_network:
+      external: true
+

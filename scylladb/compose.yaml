@@ -4,16 +4,23 @@ services:
     container_name: scylladb-1
     # environment:
     #   FOO: ${FOO}
-    hostname: "127.0.0.1"
+    # hostname: "0.0.0.0"
     ports:
       - "7002:7002"
       - "7003:7003"
       - "7200:7200"
       - "9043:9043"
       - "9161:9161"
-    # volumes:
-    #   - ./data:/foo/bar
+    volumes:
+      - ./data:/var/lib/scylla
+    networks:
+      - core_docker_network
     restart: unless-stopped
 
 # volumes:
 #   scylladb-data:
+
+networks:
+    core_docker_network:
+      external: true
+
