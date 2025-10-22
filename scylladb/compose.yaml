@@ -12,7 +12,7 @@ services:
       - "9043:9043"
       - "9161:9161"
     volumes:
-      - ./data:/var/lib/scylla
+      - ./data:/var/lib/scylla/data # chown -R 999:999 path/dir (999 official scylladb)
     networks:
       - core_docker_network
     restart: unless-stopped

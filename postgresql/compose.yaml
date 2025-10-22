@@ -10,8 +10,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      # check: docker exec postgresql-1 id
-      - ./data:/var/lib/postgresql # required chown -R uid:uid path/dir
+      - ./data:/var/lib/postgresql # chown -R uid:uid path/dir
     networks:
       - core_docker_network
     restart: unless-stopped

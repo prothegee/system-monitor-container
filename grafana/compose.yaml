@@ -8,8 +8,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      # docker exec grafana-1 id
-      - ./data:/var/lib/grafana # required chown -R 472:472 path/dir (472 official grafana)
+      - ./data:/var/lib/grafana # chown -R 472:472 path/dir (472 official grafana)
     networks:
       - core_docker_network
     restart: unless-stopped
