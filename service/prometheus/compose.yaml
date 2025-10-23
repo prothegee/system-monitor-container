@@ -8,6 +8,7 @@ services:
     ports:
       - "9090:9090"
     volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
       - ./data:/etc/prometheus
     networks:
       - core_docker_network
@@ -19,12 +20,15 @@ services:
     ports:
       - "9100:9100"
     volumes:
-        - /:/hostfs:ro,rslave
+      - /proc:/proc
+      - /sys:/sys
+      - /:/hostfs:ro,rslave
     command:
-      - '--path.rootfs=/hostfs'
+      - "--path.rootfs=/hostfs"
     networks:
       - core_docker_network
     restart: unless-stopped
+    privileged: false
 
 # volumes:
 #   prometheus-data:

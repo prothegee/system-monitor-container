@@ -1,4 +1,4 @@
-cd ./cassandra;
+cd ./service/cassandra;
 docker-compose restart;
 
 cd ../couchbase;
