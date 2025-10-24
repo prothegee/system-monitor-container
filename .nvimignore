@@ -1,3 +1,14 @@
+*/data/*
 */*/data/*
+*/*/*/data/*
 .git
+
+*/*/build/*
+*/*/*/*build/*
+*/*/.log/*
+*/*/*/.log/*
+*/*/.public/*
+*/*/*/.public/*
+*/*/.cache/*
+*/*/*/.cache/*
 

@@ -1,6 +1,6 @@
 services:
   couchbase-1:
-    image: couchbase:community
+    image: couchbase
     container_name: couchbase-1
     # environment:
     #   FOO: ${FOO}

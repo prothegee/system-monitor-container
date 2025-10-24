@@ -1,0 +1,65 @@
+groups:
+- name: stack-backend-9001
+  # backend-probe-9001 is job_name in prometheus.yml
+  rules:
+  - alert: backend_9001-down
+    expr: probe_success{job="backend-probe-9001"} == 0
+    for: 3m
+    labels:
+      severity: critical
+    annotations:
+      summary: "backend-9001 from `/v1/check/status` is DOWN"
+      description: "no response from backend for more than 3 minutes. Instance: {{ $labels.instance }}"
+
+  - alert: backend_9001-latency_high
+    expr: probe_duration_seconds{job="backend-probe-9001"} > 1
+    for: 1h
+    labels:
+      severity: warning
+    annotations:
+      summary: "backend-9001 latency > 1s for 1 hour"
+      description: "current latency: {{ $value }}s on {{ $labels.instance }}"
+
+  - alert: backend_9001-http_error
+    expr: probe_http_status_code{job="backend-probe-9001"} >= 500
+    for: 6m
+    labels:
+      severity: critical
+    annotations:
+      summary: "backend-9001 returning 5xx errors"
+      description: "status code: {{ $value }} on {{ $labels.instance }} more than 3 minutes"
+
+# ---
+
+- name: system-resources
+  rules:
+  # CPU usage > 80%
+  - alert: system-cpu-high_usage
+    expr: (100 - (avg by (instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100)) > 80
+    for: 6m
+    labels:
+      severity: warning
+    annotations:
+      summary: "high CPU usage on {{ $labels.instance }}"
+      description: "CPU usage is above 80% (current value: {{ $value }}%) for more than 6 minutes."
+
+  # RAM usage > 80%
+  - alert: system-memory-high_usage
+    expr: ((node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes) / node_memory_MemTotal_bytes * 100) > 80
+    for: 6m
+    labels:
+      severity: warning
+    annotations:
+      summary: "high memory usage on {{ $labels.instance }}"
+      description: "memory usage is above 80% (current value: {{ $value }}%) for more than 6 minutes."
+
+  # disk usage > 80%
+  - alert: system-disk-high_usage
+    expr: (100 - (node_filesystem_avail_bytes{mountpoint="/"} / node_filesystem_size_bytes{mountpoint="/"} * 100)) > 80
+    for: 5m
+    labels:
+      severity: critical
+    annotations:
+      summary: "high disk usage on {{ $labels.instance }}"
+      description: "disk usage is above 80% (current value: {{ $value }}%) for more than 6 minutes."
+

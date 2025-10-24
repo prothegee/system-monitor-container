@@ -9,13 +9,14 @@ services:
       - "9090:9090"
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./alert.rules.yml:/etc/prometheus/alert.rules.yml:ro
       - ./data:/etc/prometheus
     networks:
       - core_docker_network
     restart: unless-stopped
 
   node-exporter:
-    image: prom/node-exporter:latest
+    image: prom/node-exporter
     container_name: node-exporter
     ports:
       - "9100:9100"
@@ -29,6 +30,28 @@ services:
       - core_docker_network
     restart: unless-stopped
     privileged: false
+
+  blackbox-exporter:
+    image: prom/blackbox-exporter
+    container_name: blackbox-exporter
+    ports:
+      - "9115:9115"
+    networks:
+      - core_docker_network
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  alertmanager:
+    image: prom/alertmanager
+    container_name: alertmanager
+    ports:
+      - "9093:9093"
+    volumes:
+      - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml:ro
+    networks:
+      - core_docker_network
+    restart: unless-stopped
 
 # volumes:
 #   prometheus-data:

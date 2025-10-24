@@ -1,6 +1,6 @@
 services:
   cassandra-1:
-    image: cassandra:latest
+    image: cassandra
     container_name: cassandra-1
     # environment:
     #   FOO: ${FOO}

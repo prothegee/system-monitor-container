@@ -1,0 +1,21 @@
+global:
+  smtp_smarthost: "${SMTP_HOST}"
+  smtp_from: "${SMTP_FROM}"
+  smtp_auth_username: "${SMTP_USER}"
+  smtp_auth_password: "${SMTP_PSWD}"
+  smtp_require_tls: true
+
+route:
+  receiver: "email-notifications"
+  group_by: ["alertname", "instance"]
+  # valid times: 3s 3m 3h
+  group_wait: 3s
+  group_interval: 3m # combined/group alert
+  repeat_interval: 6m # send each time it's still error
+
+receivers:
+- name: "email-notifications"
+  email_configs:
+  - to: "${SMTP_RECIPIENT_EMAIL}"
+    send_resolved: true # will send info if it's resolved
+

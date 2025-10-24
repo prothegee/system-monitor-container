@@ -22,21 +22,12 @@ target
 
 node_modules
 
-*/*/data/*
-*/*/build/*
-
 ##
-## extension: include
+## extension
 ##
 *.bak*
 *.zip
-*.env
 *Zone.Identifier
-
-##
-## extension: exclude
-##
-!*.env.template
 
 ##
 ## file: include
