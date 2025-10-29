@@ -13,7 +13,7 @@ groups:
 
   - alert: backend_9001-latency_high
     expr: probe_duration_seconds{job="backend-probe-9001"} > 1
-    for: 1h
+    for: 12m
     labels:
       severity: warning
     annotations:
@@ -46,7 +46,7 @@ groups:
   # RAM usage > 80%
   - alert: system-memory-high_usage
     expr: ((node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes) / node_memory_MemTotal_bytes * 100) > 80
-    for: 6m
+    for: 7m
     labels:
       severity: warning
     annotations:
@@ -56,10 +56,26 @@ groups:
   # disk usage > 80%
   - alert: system-disk-high_usage
     expr: (100 - (node_filesystem_avail_bytes{mountpoint="/"} / node_filesystem_size_bytes{mountpoint="/"} * 100)) > 80
-    for: 5m
+    for: 8m
     labels:
       severity: critical
     annotations:
       summary: "high disk usage on {{ $labels.instance }}"
       description: "disk usage is above 80% (current value: {{ $value }}%) for more than 6 minutes."
+
+# ---
+
+- name: network-connectivity
+  rules:
+  - alert: InternetConnectivityLost
+    expr: |
+      avg by (instance) (
+        probe_success{job="internet-http-probe"}
+      ) == 0
+    for: 3m
+    labels:
+      severity: critical
+    annotations:
+      summary: "connection lost to {{ $labels.instance }}"
+      description: "can't access {{ $labels.instance }} for more than 3 minutes"
 

@@ -22,6 +22,22 @@ scrape_configs:
       - targets: ["node-exporter:9100"]
         labels:
           group: "monitoring"
+
+  - job_name: "internet-http-probe"
+    metrics_path: /probe
+    params:
+      module: [http_2xx]
+    static_configs:
+      - targets:
+        - https://1.1.1.1 # cloudflare dns over https
+        - https://www.google.com
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: blackbox-exporter:9115
   # end   core region
 
   # start backend region
@@ -31,7 +47,7 @@ scrape_configs:
       module: [http_2xx]
     static_configs:
       - targets:
-          - http://172.17.0.1:9001/v1/check/status
+          - http://host.docker.internal:9001/v1/check/status
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
