@@ -1,8 +1,9 @@
-# local container
+# system monitor container
 
-internal usage for container in linux system environment using docker
-
-> ~/.local/container
+example/template usage for system monitor container using:
+- docker
+- grafana
+- prometheus
 
 <br>
 
