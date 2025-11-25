@@ -4,6 +4,7 @@ _kafka_enter() {
 
 _kafka_create_topic() {
     docker exec -it kafka-1 /bin/bash -c "/opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic $@";
+    # docker exec -it kafka-1 /bin/bash -c "/opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic $@ --config cleanup.policy=compact --config min.cleanable.dirty.ratio=0.01 --config delete.retention.ms=1000";
 }
 
 _kafka_update_topic() {
@@ -15,7 +16,8 @@ _kafka_delete_topic() {
 }
 
 _kafka_consume_topic() { 
-    docker exec -it kafka-1 /bin/bash -c "/opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic $@ --from-beginning";
+    docker exec -it kafka-1 /bin/bash -c "/opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic $@";
+    # docker exec -it kafka-1 /bin/bash -c "/opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic $@ --from-beginning --property print.key=true";
 }
 
 _kafka_topics() {
