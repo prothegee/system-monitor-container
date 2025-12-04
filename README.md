@@ -1,13 +1,21 @@
 # system monitor container
 
-example/template usage for system monitor container using:
-- docker
+this repo meant to use docker service for Linux distro crossing environment (mostly I used Arch & Debian).
+
+for available container, you can go under `./serice` directory, as follow:
+- cassandra
+- couchbase
 - grafana
+- kafka
+- postgresql
 - prometheus
+- rabbitmq
+- redis
+- scylladb
 
 <br>
 
-## info
+## info showcase
 
 - monitor:
     - system resource
