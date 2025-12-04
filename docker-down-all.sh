@@ -1,3 +1,6 @@
+#!/usr/bin/bash
+set -e;
+
 cd ./service/cassandra;
 docker-compose down;
 
@@ -24,3 +27,4 @@ docker-compose down;
 
 cd ../scylladb;
 docker-compose down;
+

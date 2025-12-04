@@ -1,3 +1,6 @@
+#!/usr/bin/bash
+set -e;
+
 cd ./service/cassandra;
 docker-compose restart;
 
@@ -24,3 +27,4 @@ docker-compose restart;
 
 cd ../scylladb;
 docker-compose restart;
+
