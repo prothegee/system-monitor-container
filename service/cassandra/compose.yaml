@@ -1,7 +1,7 @@
 services:
-  cassandra-1:
+  cassandra:
     image: cassandra
-    container_name: cassandra-1
+    container_name: cassandra
     # environment:
     #   FOO: ${FOO}
     # hostname: "0.0.0.0"

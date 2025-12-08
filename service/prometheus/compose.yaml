@@ -1,7 +1,7 @@
 services:
-  prometheus-1:
+  prometheus:
     image: prom/prometheus
-    container_name: prometheus-1
+    container_name: prometheus
     # environment:
     #   FOO: ${FOO}
     # hostname: "0.0.0.0"

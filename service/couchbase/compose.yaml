@@ -1,7 +1,7 @@
 services:
-  couchbase-1:
+  couchbase:
     image: couchbase
-    container_name: couchbase-1
+    container_name: couchbase
     # environment:
     #   FOO: ${FOO}
     # hostname: "0.0.0.0"

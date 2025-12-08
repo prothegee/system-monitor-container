@@ -1,7 +1,7 @@
 services:
-  scylladb-1:
+  scylladb:
     image: scylladb/scylla
-    container_name: scylladb-1
+    container_name: scylladb
     # environment:
     #   FOO: ${FOO}
     # hostname: "0.0.0.0"

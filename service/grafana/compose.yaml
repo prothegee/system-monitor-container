@@ -1,7 +1,7 @@
 services:
-  grafana-1:
+  grafana:
     image: grafana/grafana
-    container_name: grafana-1
+    container_name: grafana
     # environment:
     #   FOO: ${FOO}
     # hostname: "0.0.0.0"
