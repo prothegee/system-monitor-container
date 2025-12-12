@@ -2,11 +2,12 @@
 
 this repo meant to use docker service for Linux distro crossing environment (mostly I used Arch & Debian).
 
-for available container, you can go under `./serice` directory, as follow:
+for available container, you can go under `./service` directory, as follow:
 - cassandra
 - couchbase
 - grafana
 - kafka
+- mysql
 - postgresql
 - prometheus
 - rabbitmq
