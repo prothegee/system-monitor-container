@@ -1,0 +1,21 @@
+services:
+  mysql:
+    image: mysql
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data:/var/lib/mysql # chown -R uid:uid path/dir
+    networks:
+      - core_docker_network
+    restart: unless-stopped
+
+# volumes:
+#   postgres-data:
+
+networks:
+    core_docker_network:
+      external: true
+
