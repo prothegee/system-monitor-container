@@ -2,9 +2,11 @@ services:
   redis:
     image: redis
     container_name: redis
-    # environment:
-    #   FOO: ${FOO}
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
     # hostname: "0.0.0.0"
+    command: >
+      sh -c 'redis-server --requirepass "$$REDIS_PASSWORD" --bind 0.0.0.0 --protected-mode yes'
     ports:
       - "6379:6379"
     volumes:
