@@ -13,6 +13,9 @@ docker-compose down;
 cd ../kafka;
 docker-compose down;
 
+cd ../mysql;
+docker-compose down;
+
 cd ../postgresql;
 docker-compose down;
 

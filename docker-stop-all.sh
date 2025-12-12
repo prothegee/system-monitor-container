@@ -13,6 +13,9 @@ docker-compose stop;
 cd ../kafka;
 docker-compose stop;
 
+cd ../mysql;
+docker-compose stop;
+
 cd ../postgresql;
 docker-compose stop;
 
