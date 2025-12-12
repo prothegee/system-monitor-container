@@ -5,12 +5,12 @@ services:
     # environment:
     #   FOO: ${FOO}
     # hostname: "0.0.0.0"
-    ports:
-      - "7002:7002"
-      - "7003:7003"
-      - "7200:7200"
-      - "9043:9043"
-      - "9161:9161"
+    # ports:
+    #   - "7002:7002"
+    #   - "7003:7003"
+    #   - "7200:7200"
+    #   - "9043:9043"
+    #   - "9161:9161"
     volumes:
       - ./data:/var/lib/scylla/data # chown -R 999:999 path/dir (999 official scylladb)
     networks:
