@@ -1,16 +1,33 @@
 services:
-  postgresql:
+  # core relational
+  postgres-1-cr:
     image: postgres
-    container_name: postgresql
+    container_name: postgres-1-cr
     environment:
-      POSTGRES_DB: ${POSTGRES_DB}
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${PG_DB_1_CR}
+      POSTGRES_USER: ${PG_USER_1_CR}
+      POSTGRES_PASSWORD: ${PG_PASSWORD_1_CR}
     # hostname: "0.0.0.0"
     ports:
       - "5432:5432"
     volumes:
-      - ./data:/var/lib/postgresql # chown -R uid:uid path/dir
+      - ./data-postgres-1-cr:/var/lib/postgresql # chown -R uid:uid path/dir
+    networks:
+      - core_docker_network
+    restart: unless-stopped
+  # heavy workload
+  postgres-2-hw:
+    image: postgres
+    container_name: postgres-2-hw
+    environment:
+      POSTGRES_DB: ${PG_DB_2_HW}
+      POSTGRES_USER: ${PG_USER_2_HW}
+      POSTGRES_PASSWORD: ${PG_PASSWORD_2_HW}
+    # hostname: "0.0.0.0"
+    ports:
+      - "5433:5433"
+    volumes:
+      - ./data-postgres-2-hw:/var/lib/postgresql # chown -R uid:uid path/dir
     networks:
       - core_docker_network
     restart: unless-stopped

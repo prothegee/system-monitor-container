@@ -10,6 +10,7 @@
 /.public
 /.target
 
+.env
 .svelte-kit
 
 bin
@@ -22,7 +23,7 @@ target
 
 node_modules
 
-*/*/data/*
+*/*/data*/*
 */*/build/*
 
 ##
