@@ -1,6 +1,6 @@
 services:
   scylladb:
-    image: scylladb/scylla
+    image: scylladb/scylla:2025.4
     container_name: scylladb
     # environment:
     #   FOO: ${FOO}
