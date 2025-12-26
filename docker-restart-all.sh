@@ -13,6 +13,9 @@ docker-compose restart;
 cd ../kafka;
 docker-compose restart;
 
+cd ../mongodb;
+docker-compose restart;
+
 cd ../mysql;
 docker-compose restart;
 

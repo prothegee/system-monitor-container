@@ -13,6 +13,9 @@ docker-compose up -d;
 cd ../kafka;
 docker-compose up -d;
 
+cd ../mongodb;
+docker-compose up -d;
+
 cd ../mysql;
 docker-compose up -d;
 

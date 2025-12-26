@@ -7,6 +7,7 @@ mkdir -p ./service/cassandra/data;
 mkdir -p ./service/couchbase/data;
 mkdir -p ./service/grafana/data;
 mkdir -p ./service/kafka/data;
+mkdir -p ./service/mongodb/data;
 mkdir -p ./service/postgresql/data;
 mkdir -p ./service/postgresql/data-postgres-1-cr;
 mkdir -p ./service/postgresql/data-postgres-2-hw;
