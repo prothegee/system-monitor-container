@@ -1,0 +1,22 @@
+services:
+  mongodb:
+    image: mongo:8.2.3
+    container_name: mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data:/data/db
+    networks:
+      - core_docker_network
+    restart: unless-stopped
+
+# volumes:
+#   mongodb-data:
+
+networks:
+  core_docker_network:
+    external: true
+
